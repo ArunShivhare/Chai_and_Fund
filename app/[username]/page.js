@@ -5,9 +5,12 @@ const Username = async ({params}) => {
     const {username} = await params;
 
   return (
-    <div className='text-2xl text-black'>
-      {username}
+    <>
+    {username}
+    <div className=''>
+      <img className='object-cover w-full' src="cover.png" alt="" />
     </div>
+    </>
   )
 }
 

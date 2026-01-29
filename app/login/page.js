@@ -1,8 +1,19 @@
 "use client"
 import React from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 const Login = () => {
+   const { data: session, status } = useSession()
+   const router = useRouter()
+
+    useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/dashboard")
+    }
+  }, [status, router])
+
   return (
     <>
       <div className="flex items-center justify-center px-4 py-40">
