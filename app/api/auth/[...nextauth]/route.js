@@ -47,16 +47,12 @@ export const authoptions = NextAuth({
                         email: user.email,
                         username: user.email.split("@")[0],
                     })
-                    user.name = newuser.username
-                }
-                else {
-                    user.name = cuurentuser.username
                 }
                 return true
             }
         },
         async session({ session, user, token }) {
-            const dbUser = await User.find({ email: session.user.email })
+            const dbUser = await User.findOne({ email: session.user.email })
             session.user.name = dbUser.username
             return session
         },
