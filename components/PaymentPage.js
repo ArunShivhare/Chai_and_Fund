@@ -1,9 +1,13 @@
 "use client"
 import React from 'react'
 import Script from 'next/script'
-import { initiate } from '@/actions/useraction'
+// import { initiate } from '@/actions/useraction'
 import { useState } from 'react'
 import { useSession } from 'next-auth/react'
+import { useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
+import { useEffect } from 'react'
+import { fetchuser, fetchpayments, initiate } from '@/actions/useraction'
 
 
 const PaymentPage = ({ username }) => {
@@ -14,17 +18,40 @@ const PaymentPage = ({ username }) => {
         amount: ""
     })
 
-    // const [currentUser, setcurrentUser] = useState({})
-    // const [payments, setPayments] = useState([])
-    // const searchParams = useSearchParams()
-    // const router = useRouter()
+    const [currentUser, setcurrentUser] = useState({})
+    const [payments, setPayments] = useState([])
+    const searchParams = useSearchParams()
+    const router = useRouter()
+
+    useEffect(() => {
+        getData()
+    }, [])
+    
+
+    // This is from AI
+    // useEffect(() => {
+    //     const loadPayments = async () => {
+    //         const data = await fetchpayments(username)
+    //         setPayments(data)
+    //     }
+    //     loadPayments()
+    // }, [username])
 
 
     const handlechange = (e) => {
         setPaymentform({ ...paymentform, [e.target.name]: e.target.value })
     }
 
+    const getData = async () => {
+        let u = await fetchuser(username)
+        setcurrentUser(u)
+        let dbpayments = await fetchpayments(username)
+        setPayments(dbpayments)
+    }
+
     const pay = async (amount) => {
+        // this is when you want to integrate razorpay
+
         // Get the order Id 
         // let a = await initiate(amount, username, paymentform)
         // let orderId = a.id
@@ -52,7 +79,8 @@ const PaymentPage = ({ username }) => {
 
         // var rzp1 = new Razorpay(options);
         // rzp1.open();
-        alert("Payments coming soon 🚧")
+        alert("Payment gateway coming soon 🚧");
+
     }
 
     return (
@@ -80,23 +108,20 @@ const PaymentPage = ({ username }) => {
                     <div className="supporter w-1/2 bg-slate-100 rounded-lg p-10">
                         {/* show list of all the supporter as a leader board */}
                         <h2 className='text-2xl font-bold my-5'>Supporter</h2>
-                        <ul className='mx-5'>
-                            <li className='my-2 flex items-center gap-2'>
-                                <img width={30} src="avatar.gif" alt="" />
-                                <span>Arun give <span className='font-bold'>$1000</span> to mrBeast with a message "love you bro 😍"</span>
-                            </li>
-                            <li className='my-2 flex items-center gap-2'>
-                                <img width={30} src="avatar.gif" alt="" />
-                                <span>Arun give <span className='font-bold'>$1000</span> to mrBeast with a message "love you bro 😍"</span>
-                            </li>
-                            <li className='my-2 flex items-center gap-2'>
-                                <img width={30} src="avatar.gif" alt="" />
-                                <span>Arun give <span className='font-bold'>$1000</span> to mrBeast with a message "love you bro 😍"</span>
-                            </li>
-                            <li className='my-2 flex items-center gap-2'>
-                                <img width={30} src="avatar.gif" alt="" />
-                                <span>Arun give <span className='font-bold'>$1000</span> to mrBeast with a message "love you bro 😍"</span>
-                            </li>
+                        <ul className="mx-5">
+                            {payments.length === 0 && (
+                                <p className="text-gray-500">No supporters yet</p>
+                            )}
+
+                            {payments.map((p, i) => (
+                                <li key={p._id} className="my-2 flex items-center gap-2">
+                                    <img width={30} src="avatar.gif" alt="" />
+                                    <span>
+                                        {p.name} give <span className="font-bold">${p.amount}</span> to {p.to_user}
+                                        {p.message && ` with a message "${p.message}"`}
+                                    </span>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className="makepayment w-1/2 bg-slate-100 rounded-lg p-10">
@@ -106,7 +131,7 @@ const PaymentPage = ({ username }) => {
                             <input onChange={handlechange} value={paymentform.message} name='message' type="text" className='w-full p-3 rounded-lg bg-slate-200' placeholder='Enter Message' />
                             <div className='felx space-x-5'>
                                 <input onChange={handlechange} value={paymentform.amount} name='amount' type="text" className='w-[65%] p-3 rounded-lg bg-slate-200' placeholder='Enter Amount' />
-                                <button className='cursor-pointer bg-linear-to-br from-purple-200 to-blue-300 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-3.5 w-[30%] text-center leading-5'>Pay</button>
+                                <button onClick={() => pay(Number(paymentform.amount))} className='cursor-pointer bg-linear-to-br from-purple-200 to-blue-300 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-3.5 w-[30%] text-center leading-5'>Pay</button>
                             </div>
                         </div>
                         <div className="flex gap-3 mt-5">

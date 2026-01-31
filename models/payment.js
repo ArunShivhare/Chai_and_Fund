@@ -5,6 +5,7 @@ const PaymentSchema = new Schema({
     name: {type: String, required: true},
     to_user: {type: String, required: true},
     oid: {type: String, required: true},
+    // oid: {type: String, default: "manual_" + Date.now()},
     message: {type: String},
     amount: {type: Number, required: true},
     createdAt:  {type: Date, default: Date.now},

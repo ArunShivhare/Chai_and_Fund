@@ -1,3 +1,6 @@
+
+//  This is the Razorpay payment verification route
+
 import { NextResponse } from "next/server";
 import { validatePaymentVerification } from "razorpay/dist/utils/razorpay-utils";
 import Payment from "@/models/payment";
@@ -27,3 +30,4 @@ export const POST = async (request) => {
     }
 
 }
+
