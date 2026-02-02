@@ -50,6 +50,11 @@ const Navbar = () => {
             className="absolute right-0 top-full mt-3 z-50 hidden group-hover:block w-44 rounded-xl bg-white border border-gray-200 shadow-lg">
             <ul className="py-2 text-sm text-gray-700">
               <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <Link href={"/"}>
+                  <button className=''>Home Page</button>
+                </Link>
+              </li>
+              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                 <Link href={"/dashboard"}>
                   <button className=''>Dashboard</button>
                 </Link>

@@ -3,6 +3,7 @@ import React from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
    const { data: session, status } = useSession()
@@ -10,12 +11,38 @@ const Login = () => {
 
     useEffect(() => {
     if (status === "authenticated") {
-      router.push("/")
+      
+      toast('Login Successfully!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          setTimeout(() => {
+            router.push("/")
+          }, 1000);
     }
   }, [status, router])
 
   return (
     <>
+    <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light" />
+          {/* Same as */}
+          <ToastContainer />
       <div className="flex items-center justify-center px-4 py-40">
         <div className="w-full max-w-md bg-white rounded-2xl shadow-lg border p-8">
 

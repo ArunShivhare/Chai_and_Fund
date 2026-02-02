@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -12,8 +13,13 @@ export default function Home() {
           A crowdfounding plateform for creator to raise money by you follower, Start Now
         </p>
         <div className="flex gap-3">
-          <button type="button" className="text-white cursor-pointer bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-4 py-2.5 text-center leading-5">Start Now</button>
-          <button type="button" className="text-white cursor-pointer bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-4 py-2.5 text-center leading-5">Read More</button>
+          <Link href="/login">
+            <button type="button" className="text-white cursor-pointer bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-4 py-2.5 text-center leading-5">Start Now</button>
+          </Link>
+
+          <Link href="/about">
+            <button type="button" className="text-white cursor-pointer bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-4 py-2.5 text-center leading-5">Read More</button>
+          </Link>
         </div>
       </div>
 
@@ -38,15 +44,20 @@ export default function Home() {
             <p className="text-center">Your fans are available to help you</p>
           </div>
         </div>
-        </div>
+      </div>
 
-        <div className="bg-slate-400 h-1 opacity-10"></div>
+      <div className="bg-slate-400 h-1 opacity-10"></div>
 
-        <div className="container mx-auto my-15 flex flex-col items-center justify-center">
+      <div className="container mx-auto my-15 flex flex-col items-center justify-center">
         <h2 className="text-3xl font-bold text-center my-10">Learn more about us</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/QtaorVNAwbI?si=jLOqMHlXlJ1K8HjW" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-        </div>
-        
+        <video
+          className="w-[560] h-[315] rounded-xl shadow-lg"
+          controls
+        >
+          <source src="/about.mp4" type="video/mp4" />
+        </video>
+      </div>
+
     </>
   );
 }
