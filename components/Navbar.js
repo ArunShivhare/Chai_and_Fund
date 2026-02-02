@@ -14,7 +14,7 @@ const Navbar = () => {
   //   </>
   // }
   return (
-    <nav className='bg-slate-50 flex justify-between px-4 h-12 items-center'>
+    <nav className='bg-slate-50 flex justify-between px-4 md:h-12 items-center'>
       <div className="logo font-bold text-lg flex gap-2 justify-center items-center">
         <span>GetMeAChai !</span>
         <img src="/tea.gif" width={30} alt="" />

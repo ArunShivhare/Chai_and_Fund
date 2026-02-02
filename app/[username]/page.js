@@ -4,6 +4,14 @@ import { notFound } from "next/navigation"
 import connectDB from '@/db/connectDB'
 import User from '@/models/user'
 
+export async function generateMetadata({ params }) {
+  const { username } = await params;
+
+  return {
+    title: `${username} - Get Me A Chai`,
+  }
+}
+
 const Username = async ({ params }) => {
   const { username } = await params;
 
@@ -15,6 +23,8 @@ const Username = async ({ params }) => {
       return notFound()
     }
   }
+
+  
 
   await checkuser()
 

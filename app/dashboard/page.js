@@ -13,6 +13,10 @@ const Dashboard = () => {
   const [form, setform] = useState({})
 
   useEffect(() => {
+    document.title = "Dashboard - Get Me A Chai"
+  }, [])
+
+  useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/")
     }
@@ -195,6 +199,4 @@ const Dashboard = () => {
 
 export default Dashboard
 
-export const metadata = {
-    title: "Dashboard - Get Me A Chai",
-};
+

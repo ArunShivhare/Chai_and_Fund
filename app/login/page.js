@@ -6,43 +6,47 @@ import { useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
-   const { data: session, status } = useSession()
-   const router = useRouter()
+  const { data: session, status } = useSession()
+  const router = useRouter()
 
-    useEffect(() => {
+  useEffect(() => {
+    document.title = "Login - Get Me A Chai"
+  }, [])
+
+  useEffect(() => {
     if (status === "authenticated") {
-      
+
       toast('Login Successfully!', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-          setTimeout(() => {
-            router.push("/")
-          }, 1000);
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setTimeout(() => {
+        router.push("/")
+      }, 1000);
     }
   }, [status, router])
 
   return (
     <>
-    <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light" />
-          {/* Same as */}
-          <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light" />
+      {/* Same as */}
+      <ToastContainer />
       <div className="flex items-center justify-center px-4 py-40">
         <div className="w-full max-w-md bg-white rounded-2xl shadow-lg border p-8">
 
@@ -85,7 +89,7 @@ const Login = () => {
               <span>Google</span>
             </button>
 
-            <button onClick={()=>{signIn("github")}} className="flex items-center justify-center gap-2 border rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-100 transition">
+            <button onClick={() => { signIn("github") }} className="flex items-center justify-center gap-2 border rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-100 transition">
               <svg className="h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
                 viewBox="0 0 73 73" version="1.1">
                 <g id="team-collaboration/version-control/github" stroke="none" strokeWidth="1" fill="none"
@@ -194,6 +198,3 @@ const Login = () => {
 
 export default Login
 
-export const metadata = {
-    title: "Login - Get Me A Chai",
-};

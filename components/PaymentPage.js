@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { use } from 'react'
 import Script from 'next/script'
 // import { initiate } from '@/actions/useraction'
 import { useState } from 'react'
@@ -146,7 +146,7 @@ const PaymentPage = ({ username }) => {
                 <div className="payment flex gap-3 w-[80%] mt-10">
                     <div className="supporter w-1/2 bg-slate-100 rounded-lg p-10">
                         {/* show list of all the supporter as a leader board */}
-                        <h2 className='text-2xl font-bold my-5'>Supporter</h2>
+                        <h2 className='text-2xl font-bold my-5'>Top Supporter</h2>
                         <ul className="mx-5">
                             {payments.length === 0 && (
                                 <p className="text-gray-500">No supporters yet</p>

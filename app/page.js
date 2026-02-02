@@ -4,59 +4,130 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-col justify-center gap-4 items-center min-h-[40vh]">
-        <div className="font-bold text-5xl flex gap-3 ">
-          <h1>Get Me A Chai</h1>
-          <span><img src="/tea.gif" width={50} alt="" /></span>
-        </div>
-        <p>
-          A crowdfounding plateform for creator to raise money by you follower, Start Now
-        </p>
-        <div className="flex gap-3">
-          <Link href="/login">
-            <button type="button" className="text-white cursor-pointer bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-4 py-2.5 text-center leading-5">Start Now</button>
-          </Link>
+      {/* HEAD SECTION */}
+      <section className="min-h-[50vh] flex items-center px-6 h-5 py-10">
+        <div className="container mx-auto grid md:grid-cols-2 gap-10 items-center">
 
-          <Link href="/about">
-            <button type="button" className="text-white cursor-pointer bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-4 py-2.5 text-center leading-5">Read More</button>
-          </Link>
-        </div>
-      </div>
+          {/* Left */}
+          <div className="space-y-5">
+            <div className="flex items-center gap-3 text-4xl md:text-5xl font-bold">
+              <h1>Get Me A Chai</h1>
+              <img src="/tea.gif" width={50} alt="" />
+            </div>
 
-      <div className="bg-slate-400 h-1 opacity-10"></div>
+            <p className="text-gray-600 text-lg">
+              A crowdfunding platform for creators.
+            </p>
 
-      <div className="container mx-auto my-15">
-        <h2 className="text-3xl font-bold text-center my-10">Your fans can buy you a chai</h2>
-        <div className="flex gap-3 justify-around">
-          <div className="item space-y-3 mx-5 justify-center items-center flex flex-col">
-            <img className="rounded-full bg-slate-200 p-2" src="/man.gif" width={80} alt="" />
-            <p className="font-bold text-xl">Found Yourself</p>
-            <p className="text-center">Your fans are available to help you</p>
+            <p className="text-gray-600 max-w-lg">
+              A place where your fans can buy you a chai and support your
+              creative journey. Turn appreciation into funding.
+            </p>
+
+            <div className="flex gap-4 pt-2">
+              <Link href="/login">
+                <button className="cursor-pointer px-6 py-2.5 rounded-full text-white bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl shadow-md">
+                  Start Now
+                </button>
+              </Link>
+
+              <Link href="/about">
+                <button className="cursor-pointer px-6 py-2.5 rounded-full border border-gray-300 hover:bg-gray-100">
+                  Read More
+                </button>
+              </Link>
+            </div>
           </div>
-          <div className="item space-y-3 mx-5 justify-center items-center flex flex-col">
-            <img className="rounded-full bg-slate-200 p-2" src="/coin.gif" width={80} alt="" />
-            <p className="font-bold text-xl">Found Yourself</p>
-            <p className="text-center">Your fans are available to help you</p>
+
+          {/* Right */}
+          <div className="flex justify-center">
+            <img
+              src="/group.gif"
+              alt=""
+              className="w-[260] md:w-[320]"
+            />
           </div>
-          <div className="item space-y-3 mx-5 justify-center items-center flex flex-col">
-            <img className="rounded-full bg-slate-200 p-2" src="/group.gif" width={80} alt="" />
-            <p className="font-bold text-xl">Fans want to help</p>
-            <p className="text-center">Your fans are available to help you</p>
+
+        </div>
+      </section>
+
+      {/* DIVIDER */}
+      <div className="h-px bg-gray-200 my-16" />
+
+      {/* FEATURES */}
+      {/* FEATURES */}
+      <section className="max-w-6xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Your fans can support you 💜
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Card */}
+          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition text-center">
+            <img
+              src="/man.gif"
+              className="mx-auto bg-purple-100 p-3 rounded-full"
+              width={80}
+              alt=""
+            />
+            <h3 className="font-semibold text-lg mt-4">
+              Fans Want to Help
+            </h3>
+            <p className="text-gray-500 mt-2">
+              Your supporters are always ready to help you grow.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition text-center">
+            <img
+              src="/coin.gif"
+              className="mx-auto bg-blue-100 p-3 rounded-full"
+              width={80}
+              alt=""
+            />
+            <h3 className="font-semibold text-lg mt-4">
+              Fans Want to Contribute
+            </h3>
+            <p className="text-gray-500 mt-2">
+              Receive financial support directly from your community.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition text-center">
+            <img
+              src="/group.gif"
+              className="mx-auto bg-pink-100 p-3 rounded-full"
+              width={80}
+              alt=""
+            />
+            <h3 className="font-semibold text-lg mt-4">
+              Fans Want to Collaborate
+            </h3>
+            <p className="text-gray-500 mt-2">
+              Build strong relationships and collaborate with fans.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="bg-slate-400 h-1 opacity-10"></div>
 
-      <div className="container mx-auto my-5 flex flex-col items-center justify-center">
-        <h2 className="text-3xl font-bold text-center my-10">Learn more about us</h2>
+      {/* DIVIDER */}
+      <div className="h-px bg-gray-200 my-16" />
+
+      {/* VIDEO */}
+      <section className="container mx-auto px-6 flex flex-col items-center">
+        <h2 className="text-3xl font-bold mb-6 text-center">
+          See how it works 🎥
+        </h2>
+
         <video
-          className="my-10 w-[560] h-[315] rounded-xl shadow-lg"
           controls
+          className="rounded-xl shadow-lg w-[280] h-[160] md:w-[560] md:h-[315]"
         >
           <source src="/about.mp4" type="video/mp4" />
         </video>
-      </div>
+        <div className="my-10"></div>
+      </section>
 
     </>
   );
