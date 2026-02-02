@@ -48,10 +48,10 @@ export default function Home() {
 
       <div className="bg-slate-400 h-1 opacity-10"></div>
 
-      <div className="container mx-auto my-15 flex flex-col items-center justify-center">
+      <div className="container mx-auto my-5 flex flex-col items-center justify-center">
         <h2 className="text-3xl font-bold text-center my-10">Learn more about us</h2>
         <video
-          className="w-[560] h-[315] rounded-xl shadow-lg"
+          className="my-10 w-[560] h-[315] rounded-xl shadow-lg"
           controls
         >
           <source src="/about.mp4" type="video/mp4" />

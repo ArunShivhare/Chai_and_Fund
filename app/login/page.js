@@ -193,3 +193,7 @@ const Login = () => {
 }
 
 export default Login
+
+export const metadata = {
+    title: "Login - Get Me A Chai",
+};

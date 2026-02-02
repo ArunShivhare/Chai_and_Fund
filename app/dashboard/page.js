@@ -194,3 +194,7 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+
+export const metadata = {
+    title: "Dashboard - Get Me A Chai",
+};
