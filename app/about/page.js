@@ -9,7 +9,7 @@ const About = () => {
                 {/* Header */}
                 <div className="font-bold text-3xl my-5 items-center justify-center gap-3 flex">
                     <h1>Get Me A Chai</h1>
-                    <span><img src="/tea.gif" width={50} alt="" /></span>
+                    <span><img src="/tea.gif" width={50} alt="" className='bg-purple-300 rounded-full'/></span>
                 </div>
                 <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
                     Get Me A Chai is a creator-friendly crowdfunding platform where fans
