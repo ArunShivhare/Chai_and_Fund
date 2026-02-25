@@ -30,18 +30,32 @@ const Navbar = () => {
       <div className='relative group'>
         {session && <>
           {/* Button */}
-          <button className="inline-flex items-center gap-2 text-white bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl font-medium rounded-full text-sm px-4 py-2">
-            {session?.user?.name || session?.user?.email || "Account"}
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-              <path
-                d="m19 9-7 7-7-7"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/ArunShivhare"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                className="p-2 w-11 hover:w-12 transition-all duration-200"
+                src="/github.svg"
+                alt="GitHub"
               />
-            </svg>
-          </button>
+            </a>
+
+            <button className="inline-flex items-center gap-2 text-white bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl font-medium rounded-full text-sm px-4 py-2">
+              {session?.user?.name || session?.user?.email || "Account"}
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="m19 9-7 7-7-7"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
 
 
           {/* Hover bridge (THIS IS THE FIX) */}
@@ -83,9 +97,23 @@ const Navbar = () => {
         {/* {session &&
           <button className='text-white cursor-pointer bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-4 py-2 text-center leading-5' onClick={() => { signOut() }}>Logout</button>
         } */}
-        {!session && <Link href={"/login"}>
-          <button className='text-white cursor-pointer bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-4 py-2 text-center leading-5'>Login</button>
-        </Link>}
+        {!session &&
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/ArunShivhare"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                className="p-2 w-11 hover:w-12 transition-all duration-200"
+                src="/github.svg"
+                alt="GitHub"
+              />
+            </a>
+            <Link href={"/login"}>
+              <button className='text-white cursor-pointer bg-linear-to-br from-purple-600 to-blue-500 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-4 py-2 text-center leading-5'>Login</button>
+            </Link>
+            </div>}
       </div>
     </nav >
   )
