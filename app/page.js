@@ -1,7 +1,19 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 export default function Home() {
+
+  const [searchUser, setSearchUser] = useState("")
+  const router = useRouter()
+
+  const handleSearch = () => {
+    if (!searchUser.trim()) return
+    router.push(`/${searchUser.trim()}`)
+  }
+
   return (
     <>
       {/* HEAD SECTION */}
@@ -14,7 +26,7 @@ export default function Home() {
               <h1 className="font-bold text-3xl md:text-5xl tracking-tight">
                 Chai <span className="text-purple-600">&</span> Fund
               </h1>
-              <img src="/tea.gif" width={50} alt="" className="bg-purple-300 rounded-full"/>
+              <img src="/tea.gif" width={50} alt="" className="bg-purple-300 rounded-full" />
             </div>
 
             <p className="text-gray-600 text-lg">
@@ -42,13 +54,38 @@ export default function Home() {
           </div>
 
           {/* Right */}
-          <div className="relative flex justify-center">
-            <div className="absolute -z-10 h-44 w-44 rounded-full bg-purple-400/20 blur-3xl"></div>
-            <img
-              src="/homepage.gif"
-              alt="Support creators"
-              className="w-[260] md:w-[320]"
-            />
+          <div className="flex flex-col items-center md:items-end gap-8">
+
+            {/* Search Card */}
+            <div className="bg-white/70 backdrop-blur-md shadow-lg border border-gray-200 rounded-2xl p-4 flex gap-3 items-center w-full max-w-md">
+
+              <input
+                type="text"
+                placeholder="Search creator to support..."
+                value={searchUser}
+                onChange={(e) => setSearchUser(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleSearch()
+                }}
+                className="flex-1 px-4 py-2 rounded-xl outline-none text-sm focus:ring-2 focus:ring-purple-500"
+              />
+
+              <button
+                onClick={handleSearch}
+                className="bg-linear-to-r from-purple-600 to-blue-500 text-white px-5 py-2 rounded-xl text-sm font-medium hover:opacity-90 transition"
+              >
+                Search
+              </button>
+            </div>
+
+            <div className="relative flex justify-center">
+              <div className="absolute -z-10 h-44 w-44 rounded-full bg-purple-400/20 blur-3xl"></div>
+              <img
+                src="/homepage.gif"
+                alt="Support creators"
+                className="w-[260] md:w-[320]"
+              />
+            </div>
           </div>
 
         </div>
@@ -135,4 +172,3 @@ export default function Home() {
     </>
   );
 }
- 
